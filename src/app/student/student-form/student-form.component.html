@@ -1,0 +1,138 @@
+<form
+  [formGroup]="studentForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              First name
+            </span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            formControlName="firstName"
+            aria-describedby="inputGroup-sizing-default"
+          >
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          *ngIf="isSubmitted && formControls.firstName.errors"
+          class="alert alert-danger"
+        >
+          <div *ngIf="formControls.firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Last name
+            </span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            formControlName="lastName"
+            aria-describedby="inputGroup-sizing-default"
+          >
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div
+          *ngIf="isSubmitted && formControls.lastName.errors"
+          class="alert alert-danger"
+        >
+          <div *ngIf="formControls.lastName.errors.required">Last Name is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Email
+            </span>
+          </div>
+          <input
+            type="email"
+            class="form-control"
+            aria-label="Default"
+            formControlName="email"
+            aria-describedby="inputGroup-sizing-default"
+          >
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div
+          *ngIf="isSubmitted && formControls.email.errors"
+          class="alert alert-danger"
+        >
+          <div *ngIf="formControls.email.errors.required">Email is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state">
+            <mat-option
+              *ngFor="let state of states"
+              [value]="state.value"
+            >
+              {{state.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div class="col-md-4">
+        <div
+          *ngIf="isSubmitted && formControls.state.errors"
+          class="alert alert-danger"
+        >
+          <div *ngIf="formControls.state.errors.required">State is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+        &nbsp;
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="clear()"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
